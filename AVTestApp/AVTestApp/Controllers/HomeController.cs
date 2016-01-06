@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AVTestApp.Controllers
@@ -11,7 +7,9 @@ namespace AVTestApp.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.CurrentDateTime = DateTime.Now.ToLocalTime();
+            var timeUtc = DateTime.UtcNow;
+            TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            ViewBag.CurrentDateTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, easternZone).ToShortTimeString();
 
             return View();
         }
