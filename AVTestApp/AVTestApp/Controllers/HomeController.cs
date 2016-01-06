@@ -11,7 +11,7 @@ namespace AVTestApp.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.CurrentDateTime = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            ViewBag.CurrentDateTime = DateTime.Now.ToShortTimeString();
 
             return View();
         }
