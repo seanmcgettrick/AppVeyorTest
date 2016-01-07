@@ -9,7 +9,9 @@ namespace AVTestApp.Controllers
         {
             var timeUtc = DateTime.UtcNow;
             TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            ViewBag.CurrentDateTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, easternZone).ToShortTimeString();
+            var localDateTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, easternZone);
+            ViewBag.CurrentTime = localDateTime.ToShortTimeString();
+            ViewBag.CurrentDate = localDateTime.ToShortDateString();
 
             return View();
         }
